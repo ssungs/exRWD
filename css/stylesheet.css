@@ -58,7 +58,6 @@ a img {
 
 /* 헤더 디자인 */
 .app-header {
-  background-color: yellow;
   position: fixed;
   left: 0;
   right: 0;
@@ -67,6 +66,7 @@ a img {
   border-bottom: 1px solid #e0e0e0;
   display: flex;
   justify-content: space-between;
+  z-index: 1000;
 }
 
 /* 로고 */
@@ -160,56 +160,57 @@ a img {
 }
 
 /* 메인 컨텐츠  - 이디야 추천 음료*/
-.app-main { 
+.app-main {
   padding: 70px 20px 20px 20px;
 }
+
 .ediya-menu {
-  display: flex;
-  flex-flow: row wrap;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto;
+  grid-row-gap: 20px;
 }
-.ediya-menu__item { 
-  width: 100%;
-  margin-bottom: 20px;
+
+.ediya-menu__item {
+  border: 1px solid #e0e0e0;
 }
-.ediya-menu__item:last-child {  
-  margin-bottom: 0;
-}
-.ediya-menu__item a { 
+
+.ediya-menu__item a {
   display: block;
   color: inherit;
   text-decoration: none;
 }
-.ediya-menu__item figure {  
+
+.ediya-menu__item figure {
   margin: 0;
   text-align: center;
-  background-color: #eee;
 }
-.ediya-menu__item figcaption {  
-  padding: 1em 0;
-}
-.ediya-menu__item img { 
+
+.ediya-menu__item img {
   transform: scale(0.85);
+  transition: all 0.4s;
   max-width: 100%;
   height: auto;
-  transition: all 0.4s;
 }
-.ediya-menu__item a:hover, .ediya-menu__item a:focus {  
+
+.ediya-menu__item a:hover img,
+.ediya-menu__item a:focus img {
   transform: scale(1);
 }
-/* medium 이상 디바이스 */
+
+.ediya-menu__item figcaption {
+  padding: 1em 0;
+}
+
+/*  Medium 이상 디바이스 */
 @media screen and (min-width: 720px) {
+  .app-main {
+    padding-top: 90px;
+  }
+
   .ediya-menu {
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 20px;
   }
-  .ediya-menu__item { 
-    width: calc(50% - 10px);
-    margin-top: 20px;
-    margin-bottom: 0;
-  }
-  .ediya-menu__item:nth-child(-n+2) { 
-    margin-top: 0;
-  }
-  /* .ediya-menu__item:nth-child(even) { 
-    padding-left: 10px;
-    padding-right: 0;
-  } */
+
 }
